@@ -120,6 +120,7 @@ public class DefaultIngredientService implements IngredientService {
      */
     private void createInventory(Ingredient ingredient){
         InventoryLog inventoryLog = new InventoryLog();
+        inventoryLog.setId(Long.valueOf(ingredient.getId()));
         inventoryLog.setIngredient(ingredient);
         inventoryRepository.save(inventoryLog);
     }

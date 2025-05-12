@@ -8,10 +8,12 @@ import java.time.LocalDate;
 @Entity
 public class InventoryLog {
 
+    @Id
+    private Long id;
+
     /**
      * Связанный ингредиент (связь один ко многим).
      */
-    @Id
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
@@ -51,4 +53,11 @@ public class InventoryLog {
         this.quantity = quantity;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

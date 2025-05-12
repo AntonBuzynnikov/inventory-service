@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.buzynnikov.inventory_service.models.Ingredient;
 
 import java.math.BigDecimal;
@@ -31,6 +32,7 @@ public interface IngredientRepository extends CrudRepository<Ingredient, Short> 
      * @param wastePercent обновленное значение процента отходов.
      */
     @Modifying
+    @Transactional
     @Query("UPDATE Ingredient i SET i.wastePercent = :wastePercent WHERE i.id = :id")
     void updateWastePercentById(Short id, BigDecimal wastePercent);
 
