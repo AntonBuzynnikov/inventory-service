@@ -8,13 +8,22 @@ import java.time.LocalDate;
 @Entity
 public class InventoryLog {
 
+    /**
+     * Связанный ингредиент (связь один ко многим).
+     */
     @Id
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
 
+    /**
+     * Дата создания записи инвентаризации.
+     */
     private LocalDate createdAt;
 
+    /**
+     * Фактическое количество ингредиента на момент инвентаризации.
+     */
     private BigDecimal quantity;    //фактический остаток
 
 

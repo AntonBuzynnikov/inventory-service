@@ -5,23 +5,45 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Класс описывает запись журнала продаж (продажи ингредиентов).
+ */
 @Entity
 public class SaleLog {
 
+    /**
+     * Уникальный идентификатор записи журнала продаж.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Номер продажи (идентификационный номер конкретной продажи).
+     */
     private String numberSale;
 
+
+    /**
+     * Инвентарный элемент, относящийся к данной продаже.
+     */
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
 
+    /**
+     * Количество проданного товара.
+     */
     private BigDecimal quantity;
 
+    /**
+     * Дата и время совершения продажи.
+     */
     private LocalDateTime saleDate;
 
+    /**
+     * Признак удаления записи (логическая пометка).
+     */
     @Column(columnDefinition = "boolean default false")
     private Boolean deleted;
 

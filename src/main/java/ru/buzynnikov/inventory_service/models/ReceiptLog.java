@@ -5,21 +5,39 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * Класс представляет журнал учета прихода ингредиентов.
+ */
 @Entity
 public class ReceiptLog {
 
+    /**
+     * Уникальный идентификатор записи журнала приходов.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Номер накладной документа прихода.
+     */
     private String invoiceNumber;
 
+    /**
+     * Связанный ингредиент (отношение многие к одному).
+     */
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
 
+    /**
+     * Количество принятого ингредиента.
+     */
     private BigDecimal amount;
 
+    /**
+     * Дата прихода ингредиента.
+     */
     private LocalDate date;
 
     public LocalDate getDate() {

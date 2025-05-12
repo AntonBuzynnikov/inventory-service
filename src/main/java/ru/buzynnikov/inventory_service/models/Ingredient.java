@@ -6,15 +6,27 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 
+/**
+ * Модель сущности "Ингредиент", хранит информацию об ингредиенте в приложении.
+ */
 @Entity
 public class Ingredient {
 
+    /**
+     * Уникальный идентификатор ингредиента.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Short id;
 
+    /**
+     * Название ингредиента.
+     */
     private String name;
 
+    /**
+     * Процент отходов при использовании ингредиента.
+     */
     @Column(name = "waste_percentage", precision = 4, scale = 3)
     private BigDecimal wastePercent;
 

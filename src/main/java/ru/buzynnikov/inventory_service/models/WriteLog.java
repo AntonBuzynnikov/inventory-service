@@ -4,19 +4,34 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+/**
+ * Класс моделирует запись журнала списания ингредиентов.
+ */
 @Entity
 public class WriteLog {
 
+    /**
+     * Уникальный идентификатор записи журнала списания.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    /**
+     * Комментарий к записи списания (причина списания и дополнительная информация).
+     */
     private String comment;
 
+    /**
+     * Связанная запись ингредиента, который был списан.
+     */
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
 
+    /**
+     * Дата списания ингредиента.
+     */
     private LocalDate date;
 
     public Long getId() {
