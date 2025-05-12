@@ -4,23 +4,21 @@ import ru.buzynnikov.inventory_service.controllers.dto.IngredientCreateRequest;
 import ru.buzynnikov.inventory_service.models.Ingredient;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface IngredientService {
 
-    Ingredient create(IngredientCreateRequest request);
+    <T extends IngredientCreateRequest> Ingredient create(T request);
 
     Ingredient getById(Short ingredientId);
 
-    Ingredient getByName(String ingredientName);
+    List<Ingredient> getByName(String ingredientName);
 
     void deleteById(Short ingredientId);
 
-    void updateAmountByName(String ingredientName, BigDecimal amount);
+    void updateWastePercent(Short id, BigDecimal newWastePercent);
 
-    void updateSettlementAmountByName(String ingredientName, BigDecimal amount, Boolean isReceipt);
+    Iterable<Ingredient> findAllById(List<Short> ids);
 
-    void updateAmountById(Short ingredientId, BigDecimal amount);
-
-    void updateSettlementAmountById(Short ingredientId, BigDecimal amount, Boolean isReceipt);
 
 }
