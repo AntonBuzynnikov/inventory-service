@@ -2,3 +2,5 @@ DELETE FROM ingredient;
 ALTER TABLE ingredient ALTER COLUMN id RESTART WITH 1;
 DELETE FROM inventory_log;
 ALTER TABLE inventory_log ALTER COLUMN id RESTART WITH 1;
+DELETE FROM receipt_log;
+ALTER TABLE receipt_log ALTER COLUMN id RESTART WITH 1;
